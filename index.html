@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Павел Чичиков (@chichikov.consult) • Профиль Instagram</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fafafa;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #262626;
+            display: flex;
+            justify-content: center;
+            padding: 30px 16px;
+        }
+
+        .instagram-profile {
+            max-width: 600px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 4px;
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* шапка Instagram */
+        .profile-header {
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #efefef;
+        }
+
+        .logo-instagram {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .logo-instagram i {
+            font-size: 24px;
+            background: linear-gradient(45deg, #fccc63, #e4405f);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo-instagram span {
+            font-weight: 600;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-icons i {
+            font-size: 24px;
+            margin-left: 18px;
+            color: #262626;
+        }
+
+        /* основная информация профиля */
+        .profile-info {
+            padding: 16px 16px 0;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+        }
+
+        .avatar-insta {
+            width: 94px;
+            height: 94px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1px solid #dbdbdb;
+            background: #f0f0f0;
+        }
+
+        .stats {
+            display: flex;
+            gap: 24px;
+            flex: 1;
+            justify-content: space-around;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #8e8e8e;
+        }
+
+        .name-status {
+            margin-top: 8px;
+        }
+
+        .real-name {
+            font-weight: 700;
+            font-size: 15px;
+            margin-bottom: 4px;
+        }
+
+        .bio-text {
+            font-size: 14px;
+            line-height: 1.4;
+            margin: 6px 0;
+        }
+
+        .bio-text i {
+            color: #5e5e5e;
+            margin-right: 4px;
+        }
+
+        .link-bio {
+            color: #00376b;
+            font-weight: 500;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        /* развёрнутое экспертное описание (в стиле инстаграм-био) */
+        .expert-description {
+            background: #f8f9fc;
+            border-radius: 12px;
+            padding: 14px 16px;
+            margin: 14px 0 10px;
+            font-size: 13.5px;
+            line-height: 1.5;
+            color: #1e2a3a;
+            border-left: 3px solid #b8860b;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .expert-description strong {
+            color: #1e3a5f;
+        }
+
+        .expert-description i.fa, 
+        .expert-description i.far,
+        .expert-description i.fas {
+            color: #b8860b;
+            margin-right: 5px;
+        }
+
+        /* кнопки действия */
+        .action-buttons {
+            display: flex;
+            gap: 8px;
+            margin: 16px 0 10px;
+        }
+
+        .btn {
+            background: #efefef;
+            border: none;
+            border-radius: 8px;
+            padding: 7px 0;
+            font-weight: 600;
+            font-size: 14px;
+            text-align: center;
+            flex: 1;
+            cursor: pointer;
+            color: #262626;
+            transition: 0.2s;
+        }
+
+        .btn-primary {
+            background: #0095f6;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.8;
+        }
+
+        /* Highlights (актуальные истории) — удалены ненужные пункты, оставлены только профессиональные */
+        .highlights {
+            display: flex;
+            gap: 20px;
+            padding: 12px 16px;
+            border-top: 1px solid #efefef;
+            border-bottom: 1px solid #efefef;
+            overflow-x: auto;
+            margin-top: 8px;
+        }
+
+        .highlight-item {
+            text-align: center;
+            width: 70px;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .highlight-circle {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #c0a55a, #9b7b3c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 6px;
+        }
+
+        .highlight-circle span {
+            background: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: #262626;
+        }
+
+        .highlight-label {
+            font-size: 12px;
+            font-weight: 500;
+            color: #262626;
+        }
+
+        /* сетка постов */
+        .posts-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: #efefef;
+            margin-top: 4px;
+        }
+
+        .post-item {
+            aspect-ratio: 1 / 1;
+            background: #e9e9e9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .post-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .post-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            color: white;
+            font-weight: 600;
+            opacity: 0;
+            transition: 0.2s;
+        }
+
+        .post-item:hover .post-overlay {
+            opacity: 1;
+        }
+
+        .overlay-icon {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 14px;
+        }
+
+        /* нижнее меню */
+        .bottom-nav {
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 20px 12px;
+            border-top: 1px solid #efefef;
+            background: white;
+            margin-top: 6px;
+        }
+
+        .bottom-nav i {
+            font-size: 24px;
+            color: #262626;
+            cursor: pointer;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 11px;
+            color: #8e8e8e;
+            padding: 14px 16px;
+            border-top: 1px solid #efefef;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 550px) {
+            .stats {
+                gap: 16px;
+            }
+            .highlight-circle {
+                width: 60px;
+                height: 60px;
+            }
+            .highlight-circle span {
+                width: 54px;
+                height: 54px;
+                font-size: 24px;
+            }
+            .highlight-label {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="instagram-profile">
+    <!-- шапка Instagram -->
+    <div class="profile-header">
+        <div class="logo-instagram">
+            <i class="fab fa-instagram"></i>
+            <span>Instagram</span>
+        </div>
+        <div class="header-icons">
+            <i class="far fa-heart"></i>
+            <i class="far fa-paper-plane"></i>
+        </div>
+    </div>
+
+    <!-- информация профиля -->
+    <div class="profile-info">
+        <div class="info-row">
+            <!-- аватар из папки img -->
+            <img class="avatar-insta" src="img/avatar.png" alt="Павел Чичиков" onerror="this.src='https://via.placeholder.com/94'; this.style.objectFit='cover'">
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">148</div>
+                    <div class="stat-label">публикаций</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">2,345</div>
+                    <div class="stat-label">подписчиков</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">543</div>
+                    <div class="stat-label">подписок</div>
+                </div>
+            </div>
+        </div>
+        <div class="name-status">
+            <div class="real-name">Павел Иванович Чичиков</div>
+            <div class="bio-text">
+                <i class="fas fa-briefcase"></i> Специалист по ревизии скрытых активов<br>
+                <i class="fas fa-car"></i> Быстрая езда | <i class="fas fa-chart-line"></i> Антикризисный консалтинг<br>
+                <i class="fas fa-handshake"></i> M&A | GR | Оптимизация для крупных землевладельцев<br>
+                <i class="fas fa-lock"></i> Сотрудничество / NDA — только в Direct
+            </div>
+            <a href="#" class="link-bio">🔗 chichikov.consult/active_assets</a>
+        </div>
+
+        <!-- РАСШИРЕННОЕ ЭКСПЕРТНОЕ ОПИСАНИЕ (ПОЛНЫЙ ТЕКСТ) -->
+        <div class="expert-description">
+            <i class="fas fa-chart-pie"></i> <strong>Павел Иванович Чичиков</strong> — признанный эксперт в области скрытой балансовой ревизии, оптимизации неучтённых резервов и корпоративного оздоровления. 
+            Более 18 лет практической работы с крупными землевладельцами, промышленными холдингами и государственными корпорациями. 
+            Специализируется на выявлении «неликвидных» конструкций с последующей реструктуризацией в высокомаржинальные активы. 
+            Действующий консультант по вопросам экономической безопасности, автор методик монетизации статистических расхождений. 
+            Сохраняет полную конфиденциальность в рамках инвестиционных переговоров. 
+            В работе придерживается принципов деликатности, быстрой езды и юридической безупречности на момент проверки.
+        </div>
+
+        <!-- кнопки действий -->
+        <div class="action-buttons">
+            <button class="btn btn-primary">Подписаться</button>
+            <button class="btn">Написать</button>
+            <button class="btn">…</button>
+        </div>
+    </div>
+
+    <!-- Highlights (актуальные истории) — удалены нецелевые "Активы / Бричка / Проверки", оставлены только релевантные деловые -->
+    <div class="highlights">
+        <div class="highlight-item">
+            <div class="highlight-circle"><span>📈</span></div>
+            <div class="highlight-label">Ревизия</div>
+        </div>
+        <div class="highlight-item">
+            <div class="highlight-circle"><span>⚖️</span></div>
+            <div class="highlight-label">Due Diligence</div>
+        </div>
+        <div class="highlight-item">
+            <div class="highlight-circle"><span>💼</span></div>
+            <div class="highlight-label">Переговоры</div>
+        </div>
+        <div class="highlight-item">
+            <div class="highlight-circle"><span>🏛️</span></div>
+            <div class="highlight-label">Госсектор</div>
+        </div>
+        <div class="highlight-item">
+            <div class="highlight-circle"><span>📊</span></div>
+            <div class="highlight-label">Антикризис</div>
+        </div>
+    </div>
+
+    <!-- сетка постов (с использованием logo.png и avatar.png) -->
+    <div class="posts-grid">
+        <!-- Пост 1: logo.png -->
+        <div class="post-item">
+            <img class="post-img" src="img/logo.png" alt="Консалтинговое бюро" onerror="this.src='https://via.placeholder.com/200?text=Logo'">
+            <div class="post-overlay">
+                <div class="overlay-icon"><i class="far fa-heart"></i> 312</div>
+                <div class="overlay-icon"><i class="far fa-comment"></i> 28</div>
+            </div>
+        </div>
+        <!-- Пост 2: avatar.png (эксперт) -->
+        <div class="post-item">
+            <img class="post-img" src="img/avatar.png" alt="На переговорах" onerror="this.src='https://via.placeholder.com/200?text=Чичиков'">
+            <div class="post-overlay">
+                <div class="overlay-icon"><i class="far fa-heart"></i> 527</div>
+                <div class="overlay-icon"><i class="far fa-comment"></i> 43</div>
+            </div>
+        </div>
+        <!-- Пост 3: тематика балансовая ревизия -->
+        <div class="post-item">
+            <div style="background:#1e3a5f; width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:white; flex-direction:column;">
+                <i class="fas fa-chart-line" style="font-size: 38px; margin-bottom: 8px;"></i>
+                <span style="font-weight:500; font-size:12px;">Скрытые резервы</span>
+            </div>
+            <div class="post-overlay">
+                <div class="overlay-icon"><i class="far fa-heart"></i> 189</div>
+                <div class="overlay-icon"><i class="far fa-comment"></i> 12</div>
+            </div>
+        </div>
+        <!-- Пост 4: logo.png (бренд) 2-й раз -->
+        <div class="post-item">
+            <img class="post-img" src="img/logo.png" alt="Чичиков консалтинг" onerror="this.style.background='#d4af37'; this.style.display='flex'; this.innerText='💰'">
+            <div class="post-overlay">
+                <div class="overlay-icon"><i class="far fa-heart"></i> 97</div>
+                <div class="overlay-icon"><i class="far fa-comment"></i> 8</div>
+            </div>
+        </div>
+        <!-- Пост 5: M&A сделки -->
+        <div class="post-item">
+            <div style="background:#b8860b; width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:white; font-weight:bold; flex-direction:column;">
+                <i class="fas fa-handshake" style="font-size: 34px;"></i>
+                <span style="margin-top: 6px;">M&A закрыто</span>
+            </div>
+            <div class="post-overlay">
+                <div class="overlay-icon"><i class="far fa-heart"></i> 233</div>
+                <div class="overlay-icon"><i class="far fa-comment"></i> 19</div>
+            </div>
+        </div>
+        <!-- Пост 6: экспертиза -->
+        <div class="post-item">
+            <img class="post-img" src="img/avatar.png" alt="Консультация" onerror="this.style.background='#2c3e50'">
+            <div class="post-overlay">
+                <div class="overlay-icon"><i class="far fa-heart"></i> 421</div>
+                <div class="overlay-icon"><i class="far fa-comment"></i> 35</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- нижнее меню (инстаграм-навигация) -->
+    <div class="bottom-nav">
+        <i class="fas fa-home"></i>
+        <i class="fas fa-search"></i>
+        <i class="fas fa-plus-square"></i>
+        <i class="fas fa-play-circle"></i>
+        <i class="fas fa-user-circle"></i>
+    </div>
+
+    <!-- дополнительный блок с инвестиционной декларацией -->
+    <div class="footer-note">
+        <i class="fas fa-chart-simple"></i> <strong>Инвестиционное предложение:</strong> Монетизация статистических погрешностей. Гарантия отсутствия претензий на момент проверки.<br>
+        📩 Direct для конфиденциальных переговоров | Аккредитация РСПП
+    </div>
+</div>
+
+<!-- лёгкий скрипт для имитации действий (чтобы было похоже на живой инстаграм-прототип) -->
+<script>
+    const btns = document.querySelectorAll('.btn, .post-item, .highlight-item, .bottom-nav i');
+    btns.forEach(el => {
+        el.addEventListener('click', (e) => {
+            if(el.classList && el.classList.contains('btn-primary')) {
+                alert('✅ Вы подписались на обновления Павла Чичикова. Экспертные материалы по ревизии активов — в ленте.');
+            } else if(el.classList && el.classList.contains('btn') && el.innerText.includes('Написать')) {
+                alert('📩 Конфиденциальный канал Direct. Ваше сообщение будет рассмотрено в рамках NDA.');
+            } else if(el.classList && el.classList.contains('post-item')) {
+                alert('📸 Публикация из ленты: Павел Чичиков делится результатами due diligence. Оставьте комментарий!');
+            } else if(el.closest('.highlight-item')) {
+                alert('⭐ Актуальные истории: методология выявления неликвидных конструкций и реструктуризации активов.');
+            } else if(el.tagName === 'I' && el.closest('.bottom-nav')) {
+                alert('🔍 Instagram-навигация (демо). Реальный профиль: @chichikov.consult');
+            } else {
+                if(el.innerText === '…') alert('Дополнительные опции: пожаловаться / скопировать ссылку на профиль');
+            }
+            e.stopPropagation();
+        });
+    });
+</script>
+</body>
+</html>
